@@ -14,9 +14,21 @@ function doWhichKey(e) {
   let charCode = e.keyCode || e.which;
   return String.fromCharCode(charCode);
 }
-window.addEventListener('keypress', function (e) {
-  let k = e.key;
-  // let k = String.fromCharCode(e.keyCode);
-  string1.innerHTML += k;
+window.addEventListener('keydown', function (e) {
+  if(e.key=='Backspace')
+  {
+    string1.innerText = string1.innerText.substring(0,string1.innerText.length-1);
+    // console.log(string1.innerText.length);
+  }
+  else if(e.key==" ")
+  {
+    string1.innerHTML += " ";
+  }
+  else if(e.keyCode>=65)
+  {
+    let k = e.key;
+    string1.innerHTML += k;
+  }
+  console.log(e);
   document.getElementById('blr').focus();
 }, false);
